@@ -162,7 +162,7 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	text.Draw(screen, g.msg, bitmapfont.Face, 5, 10, color.White)
 	text.Draw(screen, "change color key:[next color:'c', Red:'1', Yellow:'2', Green:'3'], move key:[Left:'<-', Right:'->']", bitmapfont.Face, 5, 476, color.White)
 	// ボール
-	g.drawballs(screen)
+	g.drawBalls(screen)
 	// 鳥
 	g.drawBird(screen)
 }
@@ -172,13 +172,13 @@ func (g *Game) drawBackground(screen *ebiten.Image) {
 	screen.DrawImage(backgroundImage, op)
 }
 
-func (g *Game) drawballs(screen *ebiten.Image) {
+func (g *Game) drawBalls(screen *ebiten.Image) {
 	for i := range g.balls.ball {
-		g.drawball(screen, i)
+		g.drawBall(screen, i)
 	}
 }
 
-func (g *Game) drawball(screen *ebiten.Image, index int) {
+func (g *Game) drawBall(screen *ebiten.Image, index int) {
 	op := &ebiten.DrawImageOptions{}
 	op.GeoM.Translate(g.balls.ball[index].x, g.balls.ball[index].y)
 	screen.DrawImage(g.balls.images[g.balls.ball[index].color], op)
